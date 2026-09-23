@@ -1,6 +1,5 @@
 import asyncio
 import os
-import json
 import threading
 from flask import Flask
 from playwright.async_api import async_playwright
@@ -21,23 +20,23 @@ async def run_bot():
             args=['--no-sandbox', '--disable-setuid-sandbox']
         )
         
-        # Load saved browser session/cookies if present
+        # Check if login session file exists
         if os.path.exists("storage.json"):
+            print("Found storage.json! Loading saved login session...")
             context = await browser.new_context(
                 storage_state="storage.json",
                 viewport={'width': 1280, 'height': 720}
             )
-            print("Loaded saved login session successfully!")
         else:
+            print("WARNING: storage.json NOT found in repo! Bot is running as a guest.")
             context = await browser.new_context(viewport={'width': 1280, 'height': 720})
-            print("Warning: No storage.json found. Bot running without logged-in session.")
 
         page = await context.new_page()
 
         print("Navigating to game URL...")
         await page.goto("https://paios-classroom.com/campus", wait_until="networkidle")
 
-        print("Waiting 15 seconds for campus/canvas to load...")
+        print("Waiting 15 seconds for game elements to load...")
         await asyncio.sleep(15)
 
         print("Starting task loop...")
