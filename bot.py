@@ -8,10 +8,71 @@ app = Flask(__name__)
 
 @app.route('/')
 def health_check():
-    return "Swim Bot is active and running!"
+    return "Swim & Heal Bot is active and running!"
 
 def run_web_server():
     app.run(host='0.0.0.0', port=10000)
+
+async def walk_to_chapel(page):
+    print("HP low! Walking to Chapel to heal...")
+    
+    # Right 3 seconds
+    await page.keyboard.down("KeyD")
+    await asyncio.sleep(3.0)
+    await page.keyboard.up("KeyD")
+    await asyncio.sleep(0.2)
+
+    # Up (Forward) 12 seconds
+    await page.keyboard.down("KeyW")
+    await asyncio.sleep(12.0)
+    await page.keyboard.up("KeyW")
+    await asyncio.sleep(0.2)
+
+    # Right 1 second
+    await page.keyboard.down("KeyD")
+    await asyncio.sleep(1.0)
+    await page.keyboard.up("KeyD")
+    await asyncio.sleep(0.2)
+
+    # Up (Forward) 2 seconds
+    await page.keyboard.down("KeyW")
+    await asyncio.sleep(2.0)
+    await page.keyboard.up("KeyW")
+    await asyncio.sleep(0.5)
+
+    # Press X to sit/rest/heal in Chapel
+    print("Arrived at Chapel. Pressing X and resting for 15 seconds...")
+    await page.keyboard.press("KeyX")
+    await asyncio.sleep(15.0)
+
+async def walk_back_to_pool(page):
+    print("Healed! Walking back to Swimming Pool...")
+
+    # Down (Backward) 2 seconds (Reverse of Up 2s)
+    await page.keyboard.down("KeyS")
+    await asyncio.sleep(2.0)
+    await page.keyboard.up("KeyS")
+    await asyncio.sleep(0.2)
+
+    # Left 1 second (Reverse of Right 1s)
+    await page.keyboard.down("KeyA")
+    await asyncio.sleep(1.0)
+    await page.keyboard.up("KeyA")
+    await asyncio.sleep(0.2)
+
+    # Down (Backward) 12 seconds (Reverse of Up 12s)
+    await page.keyboard.down("KeyS")
+    await asyncio.sleep(12.0)
+    await page.keyboard.up("KeyS")
+    await asyncio.sleep(0.2)
+
+    # Left 3 seconds (Reverse of Right 3s)
+    await page.keyboard.down("KeyA")
+    await asyncio.sleep(3.0)
+    await page.keyboard.up("KeyA")
+    await asyncio.sleep(0.5)
+
+    print("Back at the Swimming Pool!")
 
 async def run_bot():
     async with async_playwright() as p:
@@ -38,7 +99,7 @@ async def run_bot():
         print("Waiting 15 seconds for canvas to load...")
         await asyncio.sleep(15)
 
-        # Focus canvas so keypresses work
+        # Focus canvas
         try:
             await page.click("canvas")
             print("Clicked game canvas to focus input.")
@@ -47,46 +108,51 @@ async def run_bot():
 
         race_count = 0
 
-        print("Starting Swimming Race Loop...")
+        print("Starting Main Automation Loop...")
         while True:
             try:
-                print(f"--- Starting Swim Race #{race_count + 1} ---")
+                # Every 5 races, take a healing break at the Chapel
+                if race_count > 0 and race_count % 5 == 0:
+                    await walk_to_chapel(page)
+                    await walk_back_to_pool(page)
+
+                print(f"--- Entering Queue for Swim Race #{race_count + 1} ---")
                 
-                # 1. Press 'X' to enter the swim race
+                # 1. Join swim queue
                 await page.keyboard.press("KeyX")
                 await asyncio.sleep(1.0)
 
-                # Click prompt button if visible
                 btn = page.locator("#vc-prompt")
                 if await btn.is_visible():
                     await btn.click()
-                    print("Clicked prompt button!")
+                    print("Clicked join line prompt!")
 
-                # Wait for race countdown to finish
-                await asyncio.sleep(3.0)
+                # 2. Wait in queue
+                print("Waiting in line for race to start...")
+                for _ in range(15):
+                    await page.keyboard.press("KeyX")
+                    await asyncio.sleep(1.0)
 
-                # 2. Swim forward (Hold W)
+                # 3. Swim
                 print("Swimming forward...")
                 await page.keyboard.down("KeyW")
-                await asyncio.sleep(4.0)  # Adjust duration based on pool length
+                await asyncio.sleep(4.5)
                 await page.keyboard.up("KeyW")
 
                 await asyncio.sleep(0.5)
 
-                # 3. Swim back (Hold S)
                 print("Swimming back...")
                 await page.keyboard.down("KeyS")
-                await asyncio.sleep(4.0)  # Adjust duration based on pool length
+                await asyncio.sleep(4.5)
                 await page.keyboard.up("KeyS")
 
-                print("Finished lap! Waiting for race reset...")
+                print("Race completed!")
                 race_count += 1
 
-                # Wait for race completion / reset to prompt
-                await asyncio.sleep(5.0)
+                await asyncio.sleep(6.0)
 
             except Exception as e:
-                print(f"Error during swim race: {e}")
+                print(f"Error during execution loop: {e}")
                 await asyncio.sleep(2.0)
 
 def start_bot_thread():
