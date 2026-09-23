@@ -1,0 +1,44 @@
+[
+{
+    "domain": "paios-classroom.com",
+    "expirationDate": 1790182601.886752,
+    "hostOnly": true,
+    "httpOnly": true,
+    "name": "paios-classroom-session",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": false,
+    "session": false,
+    "storeId": "0",
+    "value": "eyJpdiI6IlFCYlJnYS9vcG9paXFwRXVRN2VJRnc9PSIsInZhbHVlIjoiY053VytWK1lBYndWWVNRVmxLWWdYVEVyU2dwYk5oVk9YVWtkemFwaDdyQW42YnR4N2VnQUZzNHk4T1hXS0NsOW5pWGtrMnFIbzMzZXNsTEFqYXYvTFB0WlExRnFzb0VjVGUvaTVOUWxaUXR4RzF3ZkVVVnZseTZ2cFVyQ0NmdFoiLCJtYWMiOiJlZjk1OGFhNDExYTBkMjU2NjY3MWMxMzQ1OGVjZGYzYjkwN2E5ZjQ0M2M2ZGZkOGNkMGZhNzVhZjM3ZGY1OGNkIiwidGFnIjoiIn0%3D",
+    "id": 1
+},
+{
+    "domain": "paios-classroom.com",
+    "expirationDate": 1824722287.040841,
+    "hostOnly": true,
+    "httpOnly": true,
+    "name": "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": false,
+    "session": false,
+    "storeId": "0",
+    "value": "eyJpdiI6IjFjOE5ydDR4NTdDdURBOWNlTi9jSWc9PSIsInZhbHVlIjoiSnEyRnFzMFEvUkl0eUZiMFI3bUNDNXg0REd1M1lPZkV5NFFxakFOQnpBOTRWQUZlWDdsY2FzV1B2R1EzSkxkTjNJcy9xeGNEUU1UWjNBaUw3eUxOL0FGWFFlM0V1Q0I1SzVhSVJGUS9NcFltTGhmbUN0emYyTUpvTlpnZHJjcUdwMmZYMTZBdUNXK3N6cERhNWJDcXhBc2VjQjVQK1Y3dVU1ZC9NR2ptVHB6TjJ4ak4xWWZBQjVPQXEwSTQxelNxZTJvQldaYUpZUDJURnNmbGdoYVlFMzdXUXZmQ2llWjlOcDVBMktZTDljZz0iLCJtYWMiOiIyMmM3NzU4ZTUxMWNmYTBlMTNhZGJkOWUyZDEzZTliZGJiNmMxMDIyMDM2NGZjYTkxYjVlNmM0YjkzOWQ5MDZlIiwidGFnIjoiIn0%3D",
+    "id": 2
+},
+{
+    "domain": "paios-classroom.com",
+    "expirationDate": 1790182601.886364,
+    "hostOnly": true,
+    "httpOnly": false,
+    "name": "XSRF-TOKEN",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": false,
+    "session": false,
+    "storeId": "0",
+    "value": "eyJpdiI6InNEL29WdldaWjVaeVV0T3RJKzVOWlE9PSIsInZhbHVlIjoiVkszbTNTbitLamVFbGNLYnJxOVFhb000Yk5UTWs5aTJVaGxqcGxJUVh2N0ViMk94cUtLdFdrYm1BcDRqendZTm9jRUtocWgxVmYwbUdZaE5WaUlSV2VyWFh2WGE3Q0JzQVpWL2VvNGNVUW9ldkNrRThKcGJXaGtkaER6QldIcEYiLCJtYWMiOiI4MmQ4ZjU5NzgzMDY1Zjc4NmRjZDFhZDdjZTdjYTk2ZTNiMTAwOGNkYjhkYmY4MTI3YTVlMzAzZTBjOGM5NzY5IiwidGFnIjoiIn0%3D",
+    "id": 3
+}
+]
