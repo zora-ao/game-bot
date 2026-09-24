@@ -13,34 +13,69 @@ def health_check():
 def run_web_server():
     app.run(host='0.0.0.0', port=10000)
 
+async def walk_from_spawn_to_pool(page):
+    print("Navigating from world spawn to Swimming Pool...")
+
+    # Left 6s
+    await page.keyboard.down("KeyA")
+    await asyncio.sleep(6.0)
+    await page.keyboard.up("KeyA")
+    await asyncio.sleep(0.2)
+
+    # Down 3s
+    await page.keyboard.down("KeyS")
+    await asyncio.sleep(3.0)
+    await page.keyboard.up("KeyS")
+    await asyncio.sleep(0.2)
+
+    # Left 1.5s
+    await page.keyboard.down("KeyA")
+    await asyncio.sleep(1.5)
+    await page.keyboard.up("KeyA")
+    await asyncio.sleep(0.2)
+
+    # Down 9s
+    await page.keyboard.down("KeyS")
+    await asyncio.sleep(9.0)
+    await page.keyboard.up("KeyS")
+    await asyncio.sleep(0.2)
+
+    # Left 2s
+    await page.keyboard.down("KeyA")
+    await asyncio.sleep(2.0)
+    await page.keyboard.up("KeyA")
+    await asyncio.sleep(0.5)
+
+    print("Arrived at the Swimming Pool from spawn!")
+
 async def walk_to_chapel(page):
     print("HP low! Walking to Chapel to heal...")
     
-    # Right 3 seconds
+    # Right 3s
     await page.keyboard.down("KeyD")
     await asyncio.sleep(3.0)
     await page.keyboard.up("KeyD")
     await asyncio.sleep(0.2)
 
-    # Up (Forward) 12 seconds
+    # Up 12s
     await page.keyboard.down("KeyW")
     await asyncio.sleep(12.0)
     await page.keyboard.up("KeyW")
     await asyncio.sleep(0.2)
 
-    # Right 1 second
+    # Right 1s
     await page.keyboard.down("KeyD")
     await asyncio.sleep(1.0)
     await page.keyboard.up("KeyD")
     await asyncio.sleep(0.2)
 
-    # Up (Forward) 2 seconds
+    # Up 2s
     await page.keyboard.down("KeyW")
     await asyncio.sleep(2.0)
     await page.keyboard.up("KeyW")
     await asyncio.sleep(0.5)
 
-    # Press X to sit/rest/heal in Chapel
+    # Press X to rest/heal in Chapel
     print("Arrived at Chapel. Pressing X and resting for 15 seconds...")
     await page.keyboard.press("KeyX")
     await asyncio.sleep(15.0)
@@ -48,25 +83,25 @@ async def walk_to_chapel(page):
 async def walk_back_to_pool(page):
     print("Healed! Walking back to Swimming Pool...")
 
-    # Down (Backward) 2 seconds (Reverse of Up 2s)
+    # Down 2s
     await page.keyboard.down("KeyS")
     await asyncio.sleep(2.0)
     await page.keyboard.up("KeyS")
     await asyncio.sleep(0.2)
 
-    # Left 1 second (Reverse of Right 1s)
+    # Left 1s
     await page.keyboard.down("KeyA")
     await asyncio.sleep(1.0)
     await page.keyboard.up("KeyA")
     await asyncio.sleep(0.2)
 
-    # Down (Backward) 12 seconds (Reverse of Up 12s)
+    # Down 12s
     await page.keyboard.down("KeyS")
     await asyncio.sleep(12.0)
     await page.keyboard.up("KeyS")
     await asyncio.sleep(0.2)
 
-    # Left 3 seconds (Reverse of Right 3s)
+    # Left 3s
     await page.keyboard.down("KeyA")
     await asyncio.sleep(3.0)
     await page.keyboard.up("KeyA")
@@ -99,19 +134,22 @@ async def run_bot():
         print("Waiting 15 seconds for canvas to load...")
         await asyncio.sleep(15)
 
-        # Focus canvas
+        # Focus canvas so keyboard inputs register
         try:
             await page.click("canvas")
             print("Clicked game canvas to focus input.")
         except Exception as e:
             print(f"Canvas focus error: {e}")
 
+        # Navigate from spawn point to pool prompt on startup
+        await walk_from_spawn_to_pool(page)
+
         race_count = 0
 
         print("Starting Main Automation Loop...")
         while True:
             try:
-                # Every 5 races, take a healing break at the Chapel
+                # Every 5 races, walk to Chapel to heal and return
                 if race_count > 0 and race_count % 5 == 0:
                     await walk_to_chapel(page)
                     await walk_back_to_pool(page)
@@ -127,13 +165,13 @@ async def run_bot():
                     await btn.click()
                     print("Clicked join line prompt!")
 
-                # 2. Wait in queue
+                # 2. Wait in line
                 print("Waiting in line for race to start...")
                 for _ in range(15):
                     await page.keyboard.press("KeyX")
                     await asyncio.sleep(1.0)
 
-                # 3. Swim
+                # 3. Perform swim lap
                 print("Swimming forward...")
                 await page.keyboard.down("KeyW")
                 await asyncio.sleep(4.5)
