@@ -1,7 +1,7 @@
 [
 {
     "domain": "paios-classroom.com",
-    "expirationDate": 1790184980.379637,
+    "expirationDate": 1790228208.50636,
     "hostOnly": true,
     "httpOnly": true,
     "name": "paios-classroom-session",
@@ -10,7 +10,7 @@
     "secure": false,
     "session": false,
     "storeId": "0",
-    "value": "eyJpdiI6Ikl2MDhhWjZ3QU1STVIwY20wN3pab3c9PSIsInZhbHVlIjoiVVdxKzZ0ZHlrTWdLbFk4VkFtNks2dDM3U1RQRnYveW14YVFYY3VkT01DeEkzZm9vOXYrWDZ1WVhPMUJCQ1VVVzRZVVBJOCt0MmNYc1UyeGtaZXlCemdNZnpxYUxtZnhUSHZDNFFaaVRNRGlyeUlMcWlIL1lrMDdzdzY3cTNqb2EiLCJtYWMiOiI1NTU2ZGI5NjAwN2ZkNTIzNjRiNjg4ZjE1MGZhNGEzMGViOWMwOWI1OTQxZTNiYzBhMGQyMzkxYmM4OTBlY2U0IiwidGFnIjoiIn0%3D",
+    "value": "eyJpdiI6InQ0MTlmeUVRNXphclU5ejZ0QjJnZVE9PSIsInZhbHVlIjoic2ozVEpkVW0zc21TM3o1N2ZOMExYVC95SlEyTW9LaHdqc3IwTlNINkxtVVRwOU1pKytQSkc0RE42REVUdDFibEpuWmtyNFRheVpBY0hQL3htbTdDNkJtRG96cVQ1MGJ2eG8xZWJxLzNsRS9FRk1YazhpZlJCYU1UWnlCV0ZOS1oiLCJtYWMiOiI3NmNkMzJjOGU0Mzc0MTg3NWI4Y2U1MjI2NGMwOTU3NTYyMGFlM2Q4OWQzZjQwODliMDc1Y2JiZTVhMzBlNTQ4IiwidGFnIjoiIn0%3D",
     "id": 1
 },
 {
@@ -29,7 +29,7 @@
 },
 {
     "domain": "paios-classroom.com",
-    "expirationDate": 1790184980.379171,
+    "expirationDate": 1790228208.506085,
     "hostOnly": true,
     "httpOnly": false,
     "name": "XSRF-TOKEN",
@@ -38,7 +38,7 @@
     "secure": false,
     "session": false,
     "storeId": "0",
-    "value": "eyJpdiI6IkZRME1UZnZnZ0RwUng4Unk2Rjdwbnc9PSIsInZhbHVlIjoiM3lFaWxOaFV3bHcyQkZmdGNhNUxZbnhzS3FtSkxWSHdGZmhqbzhkMEx0S1VackhWY1VySm5lTEV5QlgyRVpHSHNkQ1FBNGlTWGErNzhiTzRmcFJDaDJGUmNyTHp2eDg3NUFoV3g5ZUZuQmxRYnE1Q0dGNm9MS1c1U0FhcERTeXUiLCJtYWMiOiJhZjUxOGVlMTgyNDc1YzQwNzQxNzg3NmJiNDRmOGRlZGEwMTkxYmJkMzJmZTJiZDQ2YzFkYmQ3OWI1OTFjM2EyIiwidGFnIjoiIn0%3D",
+    "value": "eyJpdiI6InZvdmFOOERKZXBOdWxvVWh1ZmRUZXc9PSIsInZhbHVlIjoiNWFyUlp1M2VHU0RmaVlTNmpYZDRmZDlKYzRDdWUxYlJyWUd4UlVDb0tSSERuanpLK2VTaFdtcytWMk5WVTlzUUs4WUdGam44a0VsZ1dDWVBpNVVKZTU2QkZzN3FjZUNDbGRVRFgzVCtSTUpqUkhCc2tkOHBkZDVIL1oxUDhCczgiLCJtYWMiOiJhMGQ2NDg2YzQyNmZkNjQ4MTRlNTE3YWRiNDQ3MGEwZmQ1NmE0NjRiZTkwYTVlNGM5Yzk4YmRkMWFhZjViY2E5IiwidGFnIjoiIn0%3D",
     "id": 3
 }
 ]
