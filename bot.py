@@ -171,18 +171,18 @@ async def run_bot():
                     await page.keyboard.press("KeyX")
                     await asyncio.sleep(1.0)
 
-                # 3. Perform swim lap
-                print("Swimming forward...")
-                await page.keyboard.down("KeyW")
+                # 3. Swim lap (Horizontal alignment)
+                print("Swimming across pool (Left)...")
+                await page.keyboard.down("KeyA")
                 await asyncio.sleep(4.5)
-                await page.keyboard.up("KeyW")
+                await page.keyboard.up("KeyA")
 
                 await asyncio.sleep(0.5)
 
-                print("Swimming back...")
-                await page.keyboard.down("KeyS")
+                print("Swimming back across pool (Right)...")
+                await page.keyboard.down("KeyD")
                 await asyncio.sleep(4.5)
-                await page.keyboard.up("KeyS")
+                await page.keyboard.up("KeyD")
 
                 print("Race completed!")
                 race_count += 1
